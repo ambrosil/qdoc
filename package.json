@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build --workspace=ckeditor-custom-build && next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "workspaces": ["ckeditor-custom-build"],
   "dependencies": {
     "@ckeditor/ckeditor5-alignment": "^39.0.1",
     "@ckeditor/ckeditor5-autoformat": "^39.0.1",
