@@ -5,9 +5,10 @@ import axios from "axios"
 import { Input } from "@nextui-org/input"
 import { QDocDocument } from "@/types/models"
 import "../styles/EditModal.scss"
-import Editor from "@/ckeditor-custom-build"
 import { ValidationState } from "@react-types/shared/src/inputs"
 import dynamic from "next/dynamic"
+
+const CustomEditor = dynamic(() => import("./CustomEditor"), { ssr: false })
 
 export default function AddEditModal({ docItem, isOpen = false, onClose, onEditDone, onAddDone }) {
     const [validation, setValidation] = useState({ name: "valid" as ValidationState, code: "valid" as ValidationState })
@@ -39,8 +40,6 @@ export default function AddEditModal({ docItem, isOpen = false, onClose, onEditD
         setEditingItem((prev) => ({ ...prev, [field]: value }))
     }
 
-    const Editor = dynamic(() => import("./MyEditor"), { ssr: false })
-
     return (
         <Modal size={"5xl"} backdrop={"blur"} isOpen={isOpen} onClose={onClose} scrollBehavior={"inside"}>
             <ModalContent>
@@ -52,7 +51,7 @@ export default function AddEditModal({ docItem, isOpen = false, onClose, onEditD
                             <Input size={"sm"} validationState={validation.code} errorMessage={validation.code === "invalid" && "Inserire un codice"} color={"primary"} type="text" label="Codice" variant="bordered" onValueChange={onChange("code")} value={editingItem?.code} className="max-w-full" />
                         </div>
 
-                        <Editor value={"Foo"} onChange={(html: string) => setEditingItem((prev) => ({ ...prev, html }))} />
+                        <CustomEditor value={editingItem.html} onChange={(html: string) => setEditingItem((prev) => ({ ...prev, html }))} />
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onPress={onClose} variant={"ghost"}>

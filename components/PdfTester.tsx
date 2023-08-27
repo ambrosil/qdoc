@@ -49,7 +49,20 @@ export default function PdfTester() {
         <>
             <Card className={"p-4"}>
                 <div className={"flex flex-col gap-2"}>
-                    <Select items={docs} selectionMode={"single"} isLoading={isSelectLoading} onChange={onSelectChange} labelPlacement={"outside"} label="Documento" variant={"faded"} placeholder="Selezionare un documento" className="max-w-full">
+                    <Select
+                        classNames={{
+                            listboxWrapper: "max-h-[400px]"
+                        }}
+                        items={docs}
+                        selectionMode={"single"}
+                        isLoading={isSelectLoading}
+                        onChange={onSelectChange}
+                        labelPlacement={"outside"}
+                        label="Documento"
+                        variant={"faded"}
+                        placeholder="Selezionare un documento"
+                        className="max-w-full"
+                    >
                         {(doc) => (
                             <SelectItem startContent={<span className={"text-bold rounded-lg border-2 p-1 text-slate-500"}>{doc.code}</span>} key={doc.code} value={doc.code}>
                                 {doc.name}
