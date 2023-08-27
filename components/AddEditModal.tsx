@@ -16,8 +16,11 @@ export default function AddEditModal({ docItem, isOpen = false, onClose, onEditD
     const [isLoading, setLoading] = React.useState(true)
 
     useEffect(() => {
-        isOpen && setLoading(false)
-        isOpen && setEditingItem(docItem)
+        if (isOpen) {
+            setLoading(false)
+            setEditingItem(docItem)
+            setValidation({ name: "valid", code: "valid" })
+        }
     }, [isOpen, docItem])
 
     const onSalvaInternal = () => {
