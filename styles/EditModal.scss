@@ -1,0 +1,14 @@
+.ck-editor__editable {
+    min-height: 400px;
+
+    * {
+        font-size: revert;
+        font-weight: revert;
+    }
+
+    ol,
+    ul,
+    menu {
+        padding: revert;
+    }
+}

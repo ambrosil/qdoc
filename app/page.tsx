@@ -1,10 +1,28 @@
-import React from "react";
-import TinyMCE from "@/components/tinymce";
+"use client"
+
+import React, { useEffect } from "react"
+import GestioneDocumenti from "@/components/GestioneDocumenti"
+import { Tab, Tabs } from "@nextui-org/tabs"
+import PdfTester from "@/components/PdfTester"
+import ProduzioniMassive from "@/components/ProduzioniMassive"
+import axios from "axios"
 
 export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center w-full">
-			<TinyMCE />
-		</section>
-	);
+    return (
+        <>
+            <Tabs size={"lg"}>
+                <Tab key="documents" title="Gestione documenti">
+                    <GestioneDocumenti />
+                </Tab>
+
+                <Tab key="tester" title="PDF Tester">
+                    <PdfTester />
+                </Tab>
+
+                <Tab key="productions" title="Produzioni massive">
+                    <ProduzioniMassive />
+                </Tab>
+            </Tabs>
+        </>
+    )
 }

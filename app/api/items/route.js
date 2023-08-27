@@ -1,58 +1,32 @@
-import {NextResponse} from 'next/server'
-import {MongoClient, ObjectId, ServerApiVersion} from "mongodb";
+import { NextResponse } from "next/server"
+import { deleteById, fetchAllDocs, fetchById, insertDoc, updateById } from "../../../services/MongoDb"
+import { streamToJson, streamToString } from "../../../utils/utils"
 
 export async function GET(req) {
-    const id = req.nextUrl.searchParams.get('id')
+    const id = req.nextUrl.searchParams.get("id")
     return NextResponse.json(id ? await fetchById(id) : await fetchAllDocs())
 }
 
-export async function POST(req) {
-    const content = await streamToString(req.body);
-    await insertDoc(JSON.parse(content))
+export async function DELETE(req) {
+    const id = req.nextUrl.searchParams.get("id")
+    await deleteById(id)
     return NextResponse.json({ result: "ok" })
 }
 
-async function streamToString(stream) {
-    const chunks = [];
-    for await (const chunk of stream) {
-        chunks.push(Buffer.from(chunk));
-    }
-
-    return Buffer.concat(chunks).toString("utf-8");
+export async function POST(req) {
+    const content = await streamToJson(req.body)
+    const result = await insertDoc(content)
+    const insertedId = result.insertedId
+    return NextResponse.json({ insertedId })
 }
 
-const uri = "mongodb+srv://luca:wjVlOhV7lzR4FY2D@qdoc.bhgwatm.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
-
-async function fetchAllDocs() {
+export async function PUT(req) {
     try {
-        await client.connect();
-        return await client.db("qdoc").collection("docs").find({}).toArray()
-    } finally {
-        await client.close();
-    }
-}
-
-async function fetchById(id) {
-    try {
-        await client.connect();
-        return await client.db("qdoc").collection("docs").findOne({_id: new ObjectId(id)})
-    } finally {
-        await client.close();
-    }
-}
-
-async function insertDoc(html) {
-    try {
-        await client.connect();
-        return await client.db("qdoc").collection("docs").insertOne({...html, date: Date.now() })
-    } finally {
-        await client.close();
+        const id = req.nextUrl.searchParams.get("id")
+        const content = await streamToJson(req.body)
+        await updateById(id, content)
+        return NextResponse.json({ result: "ok" })
+    } catch (e) {
+        return NextResponse.json({ result: e.stack })
     }
 }
