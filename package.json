@@ -1,6 +1,6 @@
 {
-  "name": "next-app-template",
-  "version": "0.0.1",
+  "name": "qdoc",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,10 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^39.0.1",
-    "@ckeditor/ckeditor5-build-decoupled-document": "^39.0.1",
+    "@ckeditor/ckeditor5-editor-classic": "^39.0.1",
     "@ckeditor/ckeditor5-react": "^6.1.0",
-    "@ckeditor/ckeditor5-source-editing": "^39.0.1",
     "@nextui-org/button": "^2.0.9",
     "@nextui-org/card": "^2.0.15",
     "@nextui-org/checkbox": "^2.0.12",
