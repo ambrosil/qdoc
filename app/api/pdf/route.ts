@@ -1,8 +1,10 @@
-import puppeteer from "puppeteer"
+//import puppeteer from "puppeteer"
 import { fetchByCode, fetchById } from "@/services/MongoDb"
 import { pdfCss } from "@/config/css"
 import { streamToJson } from "@/utils/utils"
 import Mustache from "mustache"
+import chromium from "chrome-aws-lambda"
+import puppeteer from "puppeteer-core"
 
 export async function GET(req: any) {
     try {
@@ -28,7 +30,13 @@ export async function POST(req: any) {
 }
 
 async function printPdf(html: string) {
-    const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"] })
+    const browser = await puppeteer.launch({
+        executablePath: await chromium.executablePath,
+        args: chromium.args,
+        headless: "new"
+        //args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+    })
+
     const page = await browser.newPage()
     await page.setContent(
         `
