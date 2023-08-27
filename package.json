@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run build --workspace=ckeditor-custom-build && next build",
+    "next-build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -56,13 +57,13 @@
     "@nextui-org/user": "^2.0.16",
     "@react-aria/ssr": "^3.7.1",
     "@react-aria/visually-hidden": "^3.8.3",
+    "@sparticuz/chromium": "^116.0.0",
     "@tinymce/tinymce-react": "^4.3.0",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
-    "chrome-aws-lambda": "^10.1.0",
     "clsx": "^2.0.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
@@ -73,7 +74,7 @@
     "next": "13.4.13",
     "next-themes": "^0.2.1",
     "postcss": "8.4.27",
-    "puppeteer-core": "^10.1.0",
+    "puppeteer-core": "^21.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.66.1",
@@ -83,6 +84,7 @@
   },
   "devDependencies": {
     "@types/mustache": "^4.2.2",
+    "@types/puppeteer-core": "^7.0.4",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.5.3"

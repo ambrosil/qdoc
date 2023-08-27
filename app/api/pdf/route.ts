@@ -3,7 +3,7 @@ import { fetchByCode, fetchById } from "@/services/MongoDb"
 import { pdfCss } from "@/config/css"
 import { streamToJson } from "@/utils/utils"
 import Mustache from "mustache"
-import chromium from "chrome-aws-lambda"
+import chromium from "@sparticuz/chromium"
 import puppeteer from "puppeteer-core"
 
 export async function GET(req: any) {
@@ -31,9 +31,11 @@ export async function POST(req: any) {
 
 async function printPdf(html: string) {
     const browser = await puppeteer.launch({
-        executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
+        executablePath: await chromium.executablePath(),
         args: chromium.args,
-        headless: true
+        defaultViewport: chromium.defaultViewport,
+        headless: "new",
+        ignoreHTTPSErrors: true
         //args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
     })
 
