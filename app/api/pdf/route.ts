@@ -31,9 +31,9 @@ export async function POST(req: any) {
 
 async function printPdf(html: string) {
     const browser = await puppeteer.launch({
-        executablePath: await chromium.executablePath,
+        executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
         args: chromium.args,
-        headless: "new"
+        headless: true
         //args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
     })
 
@@ -51,7 +51,7 @@ async function printPdf(html: string) {
     const margin = "10mm"
     const pdfStream = await page.pdf({
         margin: { top: margin, right: margin, bottom: margin, left: margin },
-        format: "A4",
+        format: "a4",
         printBackground: true
     })
 
