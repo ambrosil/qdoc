@@ -28,7 +28,6 @@ export async function POST(req: any) {
 }
 
 async function printPdf(html: string) {
-	// /tmp/chromium
 	const browser = await puppeteer.launch({
 		executablePath: process.env.CHROME_PATH,
 		headless: 'new',
