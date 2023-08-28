@@ -6,6 +6,10 @@ const nextConfig = {
 	}
 
 	// reactStrictMode: true,
+	// distDir: 'dist',
+	// output: 'export'
+
+	// reactStrictMode: true,
 	// output: "standalone",
 	// experimental: {
 	//     outputFileTracingRoot: path.join(__dirname, "../../"),
