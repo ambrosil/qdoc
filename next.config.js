@@ -15,18 +15,7 @@ const nextConfig = {
 
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')]
-	},
-
-	reactStrictMode: true,
-	distDir: '.next',
-	output: 'export'
-
-	// reactStrictMode: true,
-	// output: "standalone",
-	// experimental: {
-	//     outputFileTracingRoot: path.join(__dirname, "../../"),
-	//     transpilePackages: ["ui"]
-	// }
+	}
 }
 
 module.exports = nextConfig
