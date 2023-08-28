@@ -45,7 +45,7 @@ export async function PUT(req: any) {
 async function printPdf(html: string) {
 	// /tmp/chromium
 	const browser = await puppeteer.launch({
-		executablePath: await chromium.executablePath(),
+		executablePath: await chromium.executablePath('https://qooa-qdoc.netlify.app/chromium'),
 		args: chromium.args,
 		defaultViewport: chromium.defaultViewport,
 		headless: 'new',
