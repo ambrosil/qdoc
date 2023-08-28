@@ -59,6 +59,7 @@
     "@react-aria/visually-hidden": "^3.8.3",
     "@sparticuz/chromium": "^116.0.0",
     "@tinymce/tinymce-react": "^4.3.0",
+    "@types/follow-redirects": "^1.14.1",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
@@ -67,6 +68,7 @@
     "clsx": "^2.0.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
+    "follow-redirects": "^1.15.2",
     "framer-motion": "^10.15.1",
     "intl-messageformat": "^10.1.0",
     "mongodb": "^5.7.0",
@@ -80,13 +82,16 @@
     "sass": "^1.66.1",
     "tailwind-variants": "^0.1.13",
     "tailwindcss": "3.3.3",
+    "tar-fs": "^3.0.4",
     "typescript": "5.0.4"
   },
   "devDependencies": {
     "@types/mustache": "^4.2.2",
     "@types/puppeteer-core": "^7.0.4",
+    "@types/tar-fs": "^2.0.1",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3"
+    "prettier-plugin-tailwindcss": "^0.5.3",
+    "webpack-node-externals": "^3.0.0"
   }
 }
