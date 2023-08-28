@@ -18,7 +18,6 @@ const nextConfig = {
 	},
 
 	reactStrictMode: true,
-	distDir: 'dist',
 	output: 'export'
 
 	// reactStrictMode: true,
