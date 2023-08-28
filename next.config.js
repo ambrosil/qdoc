@@ -1,11 +1,10 @@
 const path = require('path')
 
 const nextConfig = {
+	output: 'standalone',
+
 	webpack: (config, options) => {
 		config.resolve.extensions.push('.br')
-
-		console.log(config.module.rules)
-
 		config.module.rules.push({
 			test: /\.br$/i,
 			type: 'asset/source'
