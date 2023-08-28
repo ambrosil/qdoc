@@ -3,13 +3,15 @@ import { pdfCss } from '@/config/css'
 import { streamToJson } from '@/utils/utils'
 import Mustache from 'mustache'
 import puppeteer from 'puppeteer-core'
+import { NextResponse } from 'next/server'
 
 export async function GET(req: any) {
 	try {
-		const id = req.nextUrl.searchParams.get('id')
-		const doc = await fetchById(id)
-		const pdf = await printPdf(doc.html)
-		return new Response(pdf, { headers: { 'Content-type': `application/pdf` } })
+		// const id = req.nextUrl.searchParams.get('id')
+		// const doc = await fetchById(id)
+		// const pdf = await printPdf(doc.html)
+		// return new Response(pdf, { headers: { 'Content-type': `application/pdf` } })
+		return NextResponse.json({ path: process.env.CHROME_PATH, env: process.env })
 	} catch (e) {
 		return new Response(e.stack, { status: 500, headers: { 'Content-type': `text/plain` } })
 	}
