@@ -3,8 +3,6 @@ import { pdfCss } from '@/config/css'
 import { streamToJson } from '@/utils/utils'
 import Mustache from 'mustache'
 import puppeteer from 'puppeteer-core'
-import { NextResponse } from 'next/server'
-import Chromium from '../chrome'
 
 export async function GET(req: any) {
 	try {
@@ -29,27 +27,13 @@ export async function POST(req: any) {
 	}
 }
 
-export async function PUT(req: any) {
-	try {
-		return NextResponse.json({
-			executablePath: await Chromium.executablePath(),
-			args: Chromium.args,
-			defaultViewport: Chromium.defaultViewport
-		})
-	} catch (e) {
-		return new Response(e.stack, { status: 500, headers: { 'Content-type': `text/plain` } })
-	}
-}
-
 async function printPdf(html: string) {
 	// /tmp/chromium
 	const browser = await puppeteer.launch({
-		executablePath: await Chromium.executablePath(),
-		args: Chromium.args,
-		defaultViewport: Chromium.defaultViewport,
+		executablePath: process.env.CHROME_PATH,
 		headless: 'new',
-		ignoreHTTPSErrors: true
-		//args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+		ignoreHTTPSErrors: true,
+		args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
 	})
 
 	const page = await browser.newPage()

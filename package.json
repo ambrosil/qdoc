@@ -90,6 +90,7 @@
     "@types/puppeteer-core": "^7.0.4",
     "@types/tar-fs": "^2.0.1",
     "eslint-config-prettier": "^9.0.0",
+    "netlify-plugin-chromium": "^1.1.4",
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.5.3",
     "webpack-node-externals": "^3.0.0"
