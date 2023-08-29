@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build --workspace=ckeditor-custom-build && next build",
+    "build": "npm run build --workspace=ckeditor-custom-build && next build && node copyChrome.js",
     "next-build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -70,6 +70,7 @@
     "eslint-config-next": "13.4.4",
     "follow-redirects": "^1.15.2",
     "framer-motion": "^10.15.1",
+    "fs-extra": "^11.1.1",
     "intl-messageformat": "^10.1.0",
     "mongodb": "^5.7.0",
     "mustache": "^4.2.0",

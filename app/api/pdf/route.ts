@@ -31,8 +31,7 @@ export async function POST(req: any) {
 
 async function printPdf(html: string) {
 	const browser = await puppeteer.launch({
-		executablePath:
-			'/opt/build/repo/node_modules/chromium/lib/chromium/chrome-linux/chrome' || process.env.CHROME_PATH,
+		executablePath: process.env.CHROME_PATH,
 		headless: 'new',
 		ignoreHTTPSErrors: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
